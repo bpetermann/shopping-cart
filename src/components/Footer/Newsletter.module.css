@@ -1,0 +1,51 @@
+.container {
+  grid-area: newsletter;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+  justify-content: space-around;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  background-color: #efeff0;
+  padding: 1rem;
+}
+.selectHeader {
+  border-top: 1px solid #d0d1d3;
+  padding-top: 1rem;
+}
+
+.emailadress {
+  width: 20rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px solid #d0d1d3;
+}
+
+.button {
+  width: 20rem;
+  background-color: black;
+  color: #fff;
+  font-size: 1rem;
+  height: 2.5rem;
+  outline: none;
+  border: none;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
+
+@media (min-width: 40rem) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+  }
+}

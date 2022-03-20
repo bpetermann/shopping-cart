@@ -1,0 +1,17 @@
+.container {
+  grid-area: main;
+  background-color: #0ee7dc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  justify-content: space-evenly;
+}
+
+@media (min-width: 40rem) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

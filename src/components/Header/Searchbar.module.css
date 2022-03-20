@@ -1,0 +1,49 @@
+.searchbar {
+  grid-area: searchbar;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 3rem;
+  background-color: #fff;
+  border-bottom: 1px solid #d0d1d3;
+}
+
+.toggleButton {
+  width: 3rem;
+  border: none;
+  cursor: pointer;
+  border-right: 1px solid #d0d1d3;
+  background-color: #fff;
+  padding-top: 0;
+  padding-bottom: 0;
+  vertical-align: middle;
+}
+
+.toggle-button:focus {
+  outline: none;
+}
+
+.toggleButton__bar {
+  width: 60%;
+  height: 0.1rem;
+  background: #767676;
+  display: block;
+  margin: 0.6rem 0.4rem;
+}
+
+.toggleButton__bar:nth-of-type(2) {
+  width: 40%;
+}
+
+.search {
+  width: 100%;
+  outline: none;
+  border: none;
+  text-align: start;
+  padding-left: 1rem;
+  font-size: 1rem;
+}
+
+.search::placeholder{
+  opacity: 0.3;
+} 

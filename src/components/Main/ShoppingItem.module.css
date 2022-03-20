@@ -1,0 +1,28 @@
+.wrapper {
+  padding: 1rem;
+  width: 14rem;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.image {
+  width: 10rem;
+  height: 14rem;
+}
+
+.button {
+  background-color: transparent;
+  outline: none;
+  border: 1px solid #000;
+  width: 8rem;
+  height: 3rem;
+  font-size: 1rem;
+}
+
+.button:hover {
+  opacity: 0.8;
+  border: 3px solid #000;
+}

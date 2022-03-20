@@ -1,0 +1,26 @@
+.wrapper {
+  grid-area: intro;
+  background-color: #0aa59d;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 1rem;
+}
+
+.image {
+  height: 16rem;
+  padding: 1rem;
+}
+
+.advertise {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 40rem) {
+  .image {
+    height: 28rem;
+  }
+}

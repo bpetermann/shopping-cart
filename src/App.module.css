@@ -1,0 +1,13 @@
+.container {
+  display: grid;
+  grid-template-rows: repeat(3, 4rem) 20rem auto 4rem 20rem 10rem;
+  grid-template-areas:
+    'header'
+    'searchbar'
+    '.'
+    'intro'
+    'main'
+    '.'
+    'newsletter'
+    'footer';
+}

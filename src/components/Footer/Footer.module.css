@@ -1,0 +1,6 @@
+.container{
+    background-color: #1a1a1a;
+    grid-area: footer;
+    display: flex;
+
+}
