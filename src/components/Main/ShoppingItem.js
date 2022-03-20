@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import classes from './ShoppingItem.module.css';
 import AuthContext from '../../store/auth-context';
-import StoreItems from "../database/StoreItems"
+import StoreItems from "../../database/StoreItems"
 
 const ShoppingItem = () => {
   const ctx = useContext(AuthContext);

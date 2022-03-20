@@ -12,18 +12,24 @@ const Newsletter = () => {
           name='email'
           placeholder='Your Email'
         />
+        <h3>I'm mostly interested in</h3>
         <div>
-          <h3 className={classes.selectHeader}>I'm mostly interested in</h3>
           <input
-            type='radio'
+            type='checkbox'
             id='wfashion'
             name='wfashion'
             value='wfashion'
+            defaultChecked='checked'
           />
           <label htmlFor='wfashion'>Women's Fahsion</label>
         </div>
         <div>
-          <input type='radio' id='mfashion' name='mfashion' value='mfashion' />
+          <input
+            type='checkbox'
+            id='mfashion'
+            name='mfashion'
+            value='mfashion'
+          />
           <label htmlFor='mfashion'>Men's Fashion</label>
         </div>
         <input type='submit' value='Add my Email' className={classes.button} />
