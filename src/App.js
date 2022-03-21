@@ -3,9 +3,7 @@ import classes from './App.module.css';
 
 import Header from './components/Header/Header';
 import Searchbar from './components/Header/Searchbar';
-import Introduction from './components/Main/Introduction';
 import ShoppingList from './components/Main/ShoppingList';
-import Newsletter from './components/Footer/Newsletter';
 import Footer from './components/Footer/Footer';
 import Cart from './components/Cart/Cart';
 
@@ -32,9 +30,7 @@ function App() {
       {showShoppingCart && <Cart onClick={shoppingCartToggler} />}
       <Header onClick={shoppingCartToggler} />
       <Searchbar onChangeSearchTerm={searchTermChangeHandler} />
-      <Introduction />
       <ShoppingList selectedItems={filteredItems} />
-      <Newsletter />
       <Footer />
     </div>
   );

@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 
 import classes from './Header.module.css';
-import AuthContext from '../../store/auth-context';
+import CartContext from '../../store/cart-context';
 
 
 const Header = (props) => {
-  const ctx = useContext(AuthContext);
+  const ctx = useContext(CartContext);
   const [cartItemsClass, setCartItemsClass] = useState(`${classes.cartitems}`);
 
   const totalCartItems = ctx.cartItems.reduce(function (acc, item) {

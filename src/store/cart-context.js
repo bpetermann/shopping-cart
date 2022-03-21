@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-const AuthContext = React.createContext({
+const CartContext = React.createContext({
   cartItems: [],
   addToCart: () => {},
   removeFromCart: () => {},
 });
 
-export const AuthContextProvider = (props) => {
+export const CartContextProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addItemHandler = (shopItem) => {
@@ -43,14 +43,12 @@ export const AuthContextProvider = (props) => {
       updatedItems[existingCartItemIndex] = updatedItem;
       setCartItems(updatedItems);
     } else {
-      setCartItems(
-        cartItems.filter((item) => item.name !== shopItem.name)
-      );
+      setCartItems(cartItems.filter((item) => item.name !== shopItem.name));
     }
   };
 
   return (
-    <AuthContext.Provider
+    <CartContext.Provider
       value={{
         cartItems: cartItems,
         addToCart: addItemHandler,
@@ -58,8 +56,8 @@ export const AuthContextProvider = (props) => {
       }}
     >
       {props.children}
-    </AuthContext.Provider>
+    </CartContext.Provider>
   );
 };
 
-export default AuthContext;
+export default CartContext;

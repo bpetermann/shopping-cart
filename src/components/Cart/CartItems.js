@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import AuthContext from '../../store/auth-context';
+import CartContext from '../../store/cart-context';
 import classes from './CartItems.module.css';
 
 const CartItems = () => {
-  const ctx = useContext(AuthContext);
+  const ctx = useContext(CartContext);
 
   return (
     <React.Fragment>

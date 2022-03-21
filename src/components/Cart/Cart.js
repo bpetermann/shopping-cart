@@ -1,11 +1,11 @@
 import classes from './Cart.module.css';
 import React, { useContext } from 'react';
 import Backdrop from '../Modal/Backdrop';
-import AuthContext from '../../store/auth-context';
+import CartContext from '../../store/cart-context';
 import CartItems from './CartItems';
 
 const Cart = (props) => {
-  const ctx = useContext(AuthContext);
+  const ctx = useContext(CartContext);
 
   const totalPrice = ctx.cartItems.reduce(function (acc, item) {
     return acc + item.amount * item.price;
