@@ -1,13 +1,14 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import classes from './ShoppingItem.module.css';
 import AuthContext from '../../store/auth-context';
-import StoreItems from "../../database/StoreItems"
+// import StoreItems from '../../database/StoreItems';
 
-const ShoppingItem = () => {
+const ShoppingItem = (props) => {
   const ctx = useContext(AuthContext);
+
   return (
     <React.Fragment>
-      {StoreItems.map((item) => {
+      {props.selectedItems.map((item) => {
         return (
           <div className={classes.wrapper} key={item.name}>
             <img

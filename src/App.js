@@ -1,28 +1,39 @@
 import { useState } from 'react';
+import classes from './App.module.css';
 
 import Header from './components/Header/Header';
 import Searchbar from './components/Header/Searchbar';
-import ShoppingList from './components/Main/ShoppingList';
-import classes from './App.module.css';
 import Introduction from './components/Main/Introduction';
-import Footer from './components/Footer/Footer';
+import ShoppingList from './components/Main/ShoppingList';
 import Newsletter from './components/Footer/Newsletter';
+import Footer from './components/Footer/Footer';
 import Cart from './components/Cart/Cart';
+
+import storeItems from './database/store-items';
 
 function App() {
   const [showShoppingCart, setShowShoppingCart] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const shoppingCartToggler = () => {
     setShowShoppingCart((prevState) => !prevState);
   };
 
+  const searchTermChangeHandler = (text) => {
+    setSearchTerm(text);
+  };
+
+  const filteredItems = storeItems.filter((item) => {
+    return item.description.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
   return (
     <div className={classes.container}>
       {showShoppingCart && <Cart onClick={shoppingCartToggler} />}
       <Header onClick={shoppingCartToggler} />
-      <Searchbar />
+      <Searchbar onChangeSearchTerm={searchTermChangeHandler} />
       <Introduction />
-      <ShoppingList />
+      <ShoppingList selectedItems={filteredItems} />
       <Newsletter />
       <Footer />
     </div>

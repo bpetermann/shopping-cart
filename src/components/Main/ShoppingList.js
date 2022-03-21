@@ -1,10 +1,10 @@
 import classes from './ShoppingList.module.css';
 import ShoppingItem from './ShoppingItem';
 
-const ShoppingList = () => {
+const ShoppingList = (props) => {
   return (
     <div className={classes.container}>
-      <ShoppingItem />
+      <ShoppingItem selectedItems={props.selectedItems} />
     </div>
   );
 };

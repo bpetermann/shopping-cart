@@ -1,6 +1,11 @@
 import classes from './Searchbar.module.css';
 
-const Searchbar = () => {
+const Searchbar = (props) => {
+  
+  const searchTermHandler = (event) => {
+    props.onChangeSearchTerm(event.target.value);
+  };
+
   return (
     <div className={classes.searchbar}>
       <button className={classes.toggleButton}>
@@ -8,7 +13,12 @@ const Searchbar = () => {
         <span className={classes.toggleButton__bar}></span>
         <span className={classes.toggleButton__bar}></span>
       </button>
-      <input className={classes.search} type='text' placeholder='Search' />
+      <input
+        className={classes.search}
+        type='text'
+        placeholder='Search'
+        onChange={searchTermHandler}
+      />
     </div>
   );
 };

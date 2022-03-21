@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import classes from './Header.module.css';
 import AuthContext from '../../store/auth-context';
@@ -13,12 +13,11 @@ const Header = (props) => {
   }, 0);
 
   useEffect(() => {
-    setCartItemsClass(`${classes.cartitems} ${classes.increase}`)
+    setCartItemsClass(`${classes.cartitems} ${classes.increase}`);
     setTimeout(() => {
       setCartItemsClass(`${classes.cartitems}`);
     }, 300);
   }, [totalCartItems]);
-
 
   return (
     <header className={classes.header}>
