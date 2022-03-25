@@ -11,3 +11,11 @@
     'newsletter'
     'footer';
 }
+
+.error {
+  grid-area: intro;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

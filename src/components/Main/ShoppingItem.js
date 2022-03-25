@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import classes from './ShoppingItem.module.css';
 import CartContext from '../../store/cart-context';
-// import StoreItems from '../../database/StoreItems';
 
 const ShoppingItem = (props) => {
   const ctx = useContext(CartContext);
@@ -10,7 +9,7 @@ const ShoppingItem = (props) => {
     <React.Fragment>
       {props.selectedItems.map((item) => {
         return (
-          <div className={classes.wrapper} key={item.name}>
+          <div className={classes.wrapper} key={item.id}>
             <img
               src={require('../../images/' + item.name + '.png')}
               alt={item.name}
