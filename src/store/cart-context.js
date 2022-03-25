@@ -18,11 +18,13 @@ export const CartContextProvider = (props) => {
         const key = localStorage.key(i);
         const value = parseInt(localStorage.getItem(key));
         const index = items.findIndex((item) => item.id === key);
-        const storedItem = {
-          ...items[index],
-          amount: value,
-        };
-        initialCartItems.push(storedItem);
+        if (index !== -1) {
+          const storedItem = {
+            ...items[index],
+            amount: value,
+          };
+          initialCartItems.push(storedItem);
+        }
       }
       setCartItems(initialCartItems);
     }
