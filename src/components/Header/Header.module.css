@@ -24,23 +24,28 @@
 }
 
 .cartButton {
-  display: block;
-  background-color: #fff;
-  outline: none;
+  margin-right: 0.5rem;
+  background: transparent;
   border: none;
-  color: #767676;
-  font-size: 1.5rem;
 }
 
 .cartButton:hover {
   color: #000;
 }
 
+.cartImage {
+  padding-top: 0.2rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  filter: invert(48%) sepia(5%) saturate(17%) hue-rotate(358deg) brightness(95%)
+    contrast(86%);
+}
+
 .cartitems {
   padding: 0 0.4rem;
   vertical-align: middle;
   position: relative;
-  top: -0.6rem;
+  top: -1.2rem;
   left: -0.5rem;
   border-radius: 50%;
   background-color: #ff4e00;
@@ -57,7 +62,6 @@
   margin-right: 0.5rem;
   background: transparent;
   border: none;
-  padding-top: 0.4rem;
 }
 
 .wishList img {
@@ -69,4 +73,3 @@
 .wishList img:hover {
   filter: none;
 }
-
