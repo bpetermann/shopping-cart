@@ -6,6 +6,7 @@ import Searchbar from './components/Header/Searchbar';
 import ShoppingList from './components/Main/ShoppingList';
 import Footer from './components/Footer/Footer';
 import Cart from './components/Cart/Cart';
+import WishList from './components/Wishlist/WishList';
 // import storeItems from './database/store-items';
 
 function App() {
@@ -13,6 +14,27 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [storeItems, setStoreItems] = useState([]);
   const [error, setError] = useState(null);
+  const [wishListItems, setWishListItems] = useState([]);
+  const [showWishList, setShowWishList] = useState(false);
+
+  const addFavoriteItemHandler = (shopItem) => {
+    const existingCartItemIndex = wishListItems.findIndex(
+      (item) => item.name === shopItem.name
+    );
+    const existingCartItem = wishListItems[existingCartItemIndex];
+    if (existingCartItem) {
+      return;
+    } else {
+      setWishListItems(wishListItems.concat(shopItem));
+      wishListToggler();
+    }
+  };
+
+  const removeFavoriteItemHandler = (shopItem) => {
+    setWishListItems(
+      wishListItems.filter((item) => item.name !== shopItem.name)
+    );
+  };
 
   const fetchStoreItems = useCallback(async () => {
     setError(null);
@@ -52,6 +74,14 @@ function App() {
     setShowShoppingCart((prevState) => !prevState);
   };
 
+  const wishListToggler = () => {
+    if (wishListItems.length === 0) {
+      return;
+    }
+    setShowWishList((prevState) => !prevState);
+    console.log('clicked');
+  };
+
   const searchTermChangeHandler = (text) => {
     setSearchTerm(text);
   };
@@ -63,7 +93,13 @@ function App() {
   let content = <p className={classes.error}>Loading...</p>;
 
   if (storeItems.length > 0) {
-    content = <ShoppingList selectedItems={filteredItems} />;
+    content = (
+      <ShoppingList
+        selectedItems={filteredItems}
+        addToFavorites={addFavoriteItemHandler}
+        wishListItems={wishListItems}
+      />
+    );
   }
 
   if (error) {
@@ -73,7 +109,14 @@ function App() {
   return (
     <div className={classes.container}>
       {showShoppingCart && <Cart onClick={shoppingCartToggler} />}
-      <Header onClick={shoppingCartToggler} />
+      {showWishList && wishListItems.length !== 0 && (
+        <WishList
+          onClick={wishListToggler}
+          wishListItems={wishListItems}
+          removeFavorite={removeFavoriteItemHandler}
+        />
+      )}
+      <Header onClick={shoppingCartToggler} showWishList={wishListToggler} />
       <Searchbar onChangeSearchTerm={searchTermChangeHandler} />
       <React.Fragment>{content}</React.Fragment>
       <Footer />

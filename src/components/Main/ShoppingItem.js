@@ -15,6 +15,18 @@ const ShoppingItem = (props) => {
               alt={item.name}
               className={classes.image}
             />
+            <button
+              className={`${classes['favorite']} ${
+                props.wishListItems.includes(item) && classes.fav
+              }`}
+              onClick={() => props.addToFavorites(item)}
+            >
+              <img
+                src={require('../../images/heart.png')}
+                alt={'Add Item to your Wishlist'}
+                className={classes.image}
+              />
+            </button>
             <div className={classes.description}>{item.description}</div>
             <div className={classes.price}>{item.price} $</div>
             <button

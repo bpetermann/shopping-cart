@@ -9,11 +9,18 @@
   padding: 0 1rem;
 }
 
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .header h3 {
   color: #767676;
   font-size: 2rem;
   font-weight: 400;
-  padding-right: 2rem;
+  margin-right: 0.5rem;
 }
 
 .cartButton {
@@ -46,9 +53,20 @@
   opacity: 0.8;
 }
 
-@media (min-width: 40rem) {
-  .header {
-    justify-content: space-between;
-  }
+.wishList {
+  margin-right: 0.5rem;
+  background: transparent;
+  border: none;
+  padding-top: 0.4rem;
+}
+
+.wishList img {
+  width: 1.4rem;
+  height: 1.4rem;
+  filter: invert(48%) sepia(5%) saturate(17%) hue-rotate(358deg) brightness(95%)
+    contrast(86%);
+}
+.wishList img:hover {
+  filter: none;
 }
 

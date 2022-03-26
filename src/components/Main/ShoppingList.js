@@ -9,7 +9,11 @@ const ShoppingList = (props) => {
     <React.Fragment>
       <Introduction />
       <div className={classes.container}>
-        <ShoppingItem selectedItems={props.selectedItems} />
+        <ShoppingItem
+          selectedItems={props.selectedItems}
+          addToFavorites={props.addToFavorites}
+          wishListItems={props.wishListItems}
+        />
       </div>
     </React.Fragment>
   );
