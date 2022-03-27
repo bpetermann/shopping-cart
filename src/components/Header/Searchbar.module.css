@@ -1,4 +1,4 @@
-.searchbar {
+.container {
   grid-area: searchbar;
   display: flex;
   flex-direction: row;

@@ -30,6 +30,7 @@
   height: 2.5rem;
   outline: none;
   border: none;
+  margin-top: 0.5rem;
 }
 
 .button:hover {
@@ -42,6 +43,7 @@
   }
   .button {
     width: 20rem;
+    margin-top: 0;
   }
   .container {
     flex-direction: row;

@@ -9,7 +9,7 @@ const CartItems = () => {
     <React.Fragment>
       {ctx.cartItems.map((item) => {
         return (
-          <div key={item.name} className={classes.itemContainer}>
+          <div key={item.name} className={classes.container}>
             <div>
               <h4>{item.name}</h4>
               <div className={classes.product}>

@@ -11,7 +11,7 @@ const ShoppingList = (props) => {
       <div className={classes.container}>
         <ShoppingItem
           selectedItems={props.selectedItems}
-          addToFavorites={props.addToFavorites}
+          addToWishlist={props.addToWishlist}
           wishListItems={props.wishListItems}
         />
       </div>

@@ -23,68 +23,23 @@
   }
 }
 
-
-.wrapper {
-  padding: 2rem;
-  width: 14rem;
-  height: 28rem;
+.btnContainer {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
 
-.image {
-  width: 10rem;
-  height: 14rem;
-}
-.price{
-  margin: 0.5rem;
-}
-.button {
+.closeWishlistBtn {
+  color: #767676;
+  opacity: .75;
+  font-size: 1.8em;
+  padding: 1rem;
   background-color: transparent;
-  outline: none;
-  border: 1px solid #000;
-  width: 8rem;
-  height: 3rem;
-  font-size: 1rem;
-}
-
-.button:hover {
-  opacity: 0.8;
-  border: 3px solid #000;
-}
-
-.favorite {
-  width: 2rem;
-  height: 2rem;
-  align-items: center;
-  vertical-align: middle;
-  background-color: #fff;
-  text-decoration: none;
   border: none;
-  position: relative;
-  top: -12rem;
-  left: 4rem;
 }
 
-.favorite img {
-  padding-top: 0.3rem;
-  width: 1rem;
-  height: 1rem;
-}
-
-.favorite:hover {
-  cursor: pointer;
-}
-
-.closeWishlist{
-  margin: 1rem;
-  width: 20rem;
-  background-color: #ff4e00;
-  color: #fff;
-  font-size: 1rem;
-  height: 2.5rem;
-  outline: none;
-  border: none;
+.closeWishlistBtn:hover {
+  color: #000;
 }

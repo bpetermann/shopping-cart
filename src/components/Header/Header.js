@@ -12,24 +12,30 @@ const Header = (props) => {
   }, 0);
 
   useEffect(() => {
-    setCartItemsClass(`${classes.cartitems} ${classes.increase}`);
+    setCartItemsClass(`${classes.cartItems} ${classes.increase}`);
     setTimeout(() => {
-      setCartItemsClass(`${classes.cartitems}`);
+      setCartItemsClass(`${classes.cartItems}`);
     }, 300);
   }, [totalCartItems]);
 
   return (
-    <header className={classes.header}>
-      <h3>Shopping Cart</h3>
-      <div className={classes.container}>
-        <button onClick={props.showWishList} className={classes.wishList}>
+    <header className={classes.container}>
+      <h2>Shopping Cart</h2>
+      <div className={classes.btnContainer}>
+        <button
+          onClick={() => props.showWishList('wishListBtn')}
+          className={classes.wishList}
+        >
           <img
             src={require('../../images/heart.png')}
             alt={'Wish list'}
             className={classes.image}
           />
         </button>
-        <button className={classes.cartButton} onClick={props.onClick}>
+        <button
+          className={classes.cartButton}
+          onClick={props.shoppingCartToggle}
+        >
           <img
             src={require('../../images/cart.png')}
             alt={'Shopping Cart'}

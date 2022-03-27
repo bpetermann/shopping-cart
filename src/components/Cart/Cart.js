@@ -25,7 +25,7 @@ const Cart = (props) => {
         {totalPrice > 0 ? (
           <button className={classes.orderButton}>Order</button>
         ) : (
-          <button onClick={props.onClick} className={classes.orderButton}>
+          <button onClick={props.shoppingCartToggle} className={classes.orderButton}>
             No items (yet!)
           </button>
         )}

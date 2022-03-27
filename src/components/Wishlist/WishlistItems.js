@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import classes from './ShoppingItem.module.css';
 import CartContext from '../../store/cart-context';
+import classes from './WishlistItems.module.css';
 
-const ShoppingItem = (props) => {
+const WishlistItems = (props) => {
   const ctx = useContext(CartContext);
 
   return (
     <React.Fragment>
-      {props.selectedItems.map((item) => {
+      {props.wishListItems.map((item) => {
         return (
           <div className={classes.container} key={item.id}>
             <img
@@ -16,16 +16,10 @@ const ShoppingItem = (props) => {
               className={classes.image}
             />
             <button
-              className={`${classes['wishlistBtn']} ${
-                props.wishListItems.includes(item) && classes.wishListItem
-              }`}
-              onClick={() => props.addToWishlist(item)}
+              className={classes.favorite}
+              onClick={() => props.removeFromWishlist(item)}
             >
-              <img
-                src={require('../../images/heart.png')}
-                alt={'Add Item to your Wishlist'}
-                className={classes.image}
-              />
+              <img src={require('../../images/heart.png')} alt={item.name} />
             </button>
             <div className={classes.description}>{item.description}</div>
             <div className={classes.price}>{item.price} $</div>
@@ -42,4 +36,4 @@ const ShoppingItem = (props) => {
   );
 };
 
-export default ShoppingItem;
+export default WishlistItems;

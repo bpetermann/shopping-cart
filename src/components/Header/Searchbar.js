@@ -7,7 +7,7 @@ const Searchbar = (props) => {
   };
 
   return (
-    <div className={classes.searchbar}>
+    <div className={classes.container}>
       <button className={classes.toggleButton}>
         <span className={classes.toggleButton__bar}></span>
         <span className={classes.toggleButton__bar}></span>
