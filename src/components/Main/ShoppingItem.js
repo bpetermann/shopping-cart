@@ -15,20 +15,32 @@ const ShoppingItem = (props) => {
               alt={item.name}
               className={classes.image}
             />
-            <button
-              className={`${classes['wishlistBtn']} ${
-                props.wishListItems.includes(item) && classes.wishListItem
-              }`}
-              onClick={() => props.addToWishlist(item)}
-            >
-              <img
-                src={require('../../images/heart.png')}
-                alt={'Add Item to your Wishlist'}
-                className={classes.image}
-              />
-            </button>
+            {props.wishListItems.includes(item) ? (
+              <button
+                className={classes.wishlistBtn}
+                onClick={() => props.removeFromWishlist(item)}
+              >
+                <img
+                  src={require('../../images/heart-full.png')}
+                  alt={'Item is on your Wishlist'}
+                  className={`${classes.wishlistHeartBtn} ${classes.bump}`}
+                />
+              </button>
+            ) : (
+              <button
+                className={classes.wishlistBtn}
+                onClick={() => props.addToWishlist(item)}
+              >
+                <img
+                  src={require('../../images/heart.png')}
+                  alt={'Add Item to your Wishlist'}
+                  className={classes.heartBtn}
+                />
+              </button>
+            )}
+
             <div className={classes.description}>{item.description}</div>
-            <div className={classes.price}>{item.price} $</div>
+            <div>{item.price} $</div>
             <button
               className={classes.button}
               onClick={() => ctx.addToCart(item)}

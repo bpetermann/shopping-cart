@@ -19,16 +19,7 @@ function App() {
   const { storeItems, error, fetchStoreItems } = fetchShopData;
 
   const addToWishlistHandler = (shopItem) => {
-    const existingCartItemIndex = wishListItems.findIndex(
-      (item) => item.name === shopItem.name
-    );
-    const existingCartItem = wishListItems[existingCartItemIndex];
-    if (existingCartItem) {
-      return;
-    } else {
-      setWishListItems(wishListItems.concat(shopItem));
-      wishlistToggleHandler();
-    }
+    setWishListItems(wishListItems.concat(shopItem));
   };
 
   const removeFromWishlistHandler = (shopItem) => {
@@ -67,6 +58,7 @@ function App() {
       <ShoppingList
         selectedItems={filteredItems}
         addToWishlist={addToWishlistHandler}
+        removeFromWishlist={removeFromWishlistHandler}
         wishListItems={wishListItems}
       />
     );
@@ -84,8 +76,8 @@ function App() {
       {showWishList && (
         <Wishlist
           wishlistToggle={wishlistToggleHandler}
-          wishListItems={wishListItems}
           removeFromWishlist={removeFromWishlistHandler}
+          wishListItems={wishListItems}
         />
       )}
       <Header

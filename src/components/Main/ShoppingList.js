@@ -13,6 +13,7 @@ const ShoppingList = (props) => {
           selectedItems={props.selectedItems}
           addToWishlist={props.addToWishlist}
           wishListItems={props.wishListItems}
+          removeFromWishlist={props.removeFromWishlist}
         />
       </div>
     </React.Fragment>

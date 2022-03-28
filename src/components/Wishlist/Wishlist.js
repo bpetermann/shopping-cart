@@ -6,7 +6,7 @@ import WishlistItems from './WishlistItems';
 const Wishlist = (props) => {
   return (
     <React.Fragment>
-      <Backdrop onClose={props.onClick} />
+      <Backdrop onClose={props.wishlistToggle} />
       
       <div className={classes.container}>
         <div className={classes.btnContainer}>

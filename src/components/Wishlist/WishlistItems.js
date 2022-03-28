@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import CartContext from '../../store/cart-context';
-import classes from './WishlistItems.module.css';
+import classes from '../Main/ShoppingItem.module.css';
 
 const WishlistItems = (props) => {
   const ctx = useContext(CartContext);
@@ -16,10 +16,14 @@ const WishlistItems = (props) => {
               className={classes.image}
             />
             <button
-              className={classes.favorite}
+              className={classes.wishlistBtn}
               onClick={() => props.removeFromWishlist(item)}
             >
-              <img src={require('../../images/heart.png')} alt={item.name} />
+              <img
+                src={require('../../images/heart-full.png')}
+                alt={item.name}
+                className={classes.wishlistHeartBtn}
+              />
             </button>
             <div className={classes.description}>{item.description}</div>
             <div className={classes.price}>{item.price} $</div>
