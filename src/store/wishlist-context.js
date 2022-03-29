@@ -18,8 +18,8 @@ export const WishlistContextProvider = (props) => {
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         const value = localStorage.getItem(key);
-        const index = items.findIndex((item) => item.id === key);
-        if (index !== -1 && value === 'wishlistItem') {
+        const index = items.findIndex((item) => item.id === value);
+        if (index !== -1) {
           const storedItem = items[index];
           initialWishlistItems.push(storedItem);
         }
@@ -31,14 +31,14 @@ export const WishlistContextProvider = (props) => {
 
   const addToWishlistHandler = (shopItem) => {
     setWishlistItems(wishlistItems.concat(shopItem));
-    localStorage.setItem(shopItem.id, 'wishlistItem');
+    localStorage.setItem(`wishlistItem${shopItem.id}`, shopItem.id);
   };
 
   const removeFromWishlistHandler = (shopItem) => {
     setWishlistItems(
       wishlistItems.filter((item) => item.name !== shopItem.name)
     );
-    localStorage.removeItem(shopItem.id);
+    localStorage.removeItem(`wishlistItem${shopItem.id}`);
   };
 
   const wishlistToggleHandler = (origin) => {

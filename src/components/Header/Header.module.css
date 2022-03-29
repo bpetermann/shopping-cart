@@ -29,7 +29,7 @@
 }
 
 .cartImage {
-  padding-top: 0.4rem;
+  margin-top: 0.4rem;
   width: 1.4rem;
   height: 1.4rem;
   filter: invert(48%) sepia(5%) saturate(17%) hue-rotate(358deg) brightness(95%)
@@ -64,9 +64,9 @@
 }
 
 .wishList img {
-  padding-top: 0.4rem;
-  width: 1.4rem;
-  height: 1.4rem;
+  margin-top: 0.3rem;
+  width: 1.3rem;
+  height: 1.3rem;
   filter: invert(48%) sepia(5%) saturate(17%) hue-rotate(358deg) brightness(95%)
     contrast(86%);
 }

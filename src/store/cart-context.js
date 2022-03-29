@@ -20,7 +20,7 @@ export const CartContextProvider = (props) => {
         const key = localStorage.key(i);
         const value = parseInt(localStorage.getItem(key));
         const index = items.findIndex((item) => item.id === key);
-        if (index !== -1 && value === Number) {
+        if (index !== -1) {
           const storedItem = {
             ...items[index],
             amount: value,
