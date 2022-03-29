@@ -29,7 +29,7 @@
 }
 
 .cartImage {
-  margin-top: 0.4rem;
+  margin-top: 0.3rem;
   width: 1.4rem;
   height: 1.4rem;
   filter: invert(48%) sepia(5%) saturate(17%) hue-rotate(358deg) brightness(95%)
@@ -40,7 +40,8 @@
   filter: none;
 }
 
-.amountBtn {
+.cartAmountBtn,
+.wishlistAmountBtn {
   padding: 0 0.4rem;
   vertical-align: middle;
   position: relative;
@@ -51,6 +52,10 @@
   font-size: 0.9rem;
   font-weight: 600;
   color: #fff;
+}
+
+.wishlistAmountBtn{
+  top: -1.15rem;
 }
 
 .increase {

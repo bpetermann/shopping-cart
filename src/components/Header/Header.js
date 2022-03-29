@@ -27,7 +27,9 @@ const Header = () => {
             alt={'Wish list'}
             className={classes.image}
           />
-          <span className={classes.amountBtn}>{totalWishlistItems}</span>
+          <span className={classes.wishlistAmountBtn}>
+            {totalWishlistItems}
+          </span>
         </button>
         <button
           className={classes.cartButton}
@@ -38,7 +40,7 @@ const Header = () => {
             alt={'Shopping Cart'}
             className={classes.cartImage}
           />
-          <span className={classes.amountBtn}>{totalCartItems}</span>
+          <span className={classes.cartAmountBtn}>{totalCartItems}</span>
         </button>
       </div>
     </header>
