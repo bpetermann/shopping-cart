@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import classes from './ShoppingItem.module.css';
 import CartContext from '../../store/cart-context';
+import WishlistContext from '../../store/wishlist-context';
 
 const ShoppingItem = (props) => {
-  const ctx = useContext(CartContext);
+  const cartCtx = useContext(CartContext);
+  const wishlistCtx = useContext(WishlistContext);
 
   return (
     <React.Fragment>
@@ -15,10 +17,10 @@ const ShoppingItem = (props) => {
               alt={item.name}
               className={classes.image}
             />
-            {props.wishListItems.includes(item) ? (
+            {wishlistCtx.wishlistItems.includes(item) ? (
               <button
                 className={classes.wishlistBtn}
-                onClick={() => props.removeFromWishlist(item)}
+                onClick={() => wishlistCtx.removeFromWishlist(item)}
               >
                 <img
                   src={require('../../images/heart-full.png')}
@@ -29,7 +31,7 @@ const ShoppingItem = (props) => {
             ) : (
               <button
                 className={classes.wishlistBtn}
-                onClick={() => props.addToWishlist(item)}
+                onClick={() => wishlistCtx.addToWishlist(item)}
               >
                 <img
                   src={require('../../images/heart.png')}
@@ -43,7 +45,7 @@ const ShoppingItem = (props) => {
             <div>{item.price} $</div>
             <button
               className={classes.button}
-              onClick={() => ctx.addToCart(item)}
+              onClick={() => cartCtx.addToCart(item)}
             >
               Add to Cart
             </button>

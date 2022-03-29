@@ -5,10 +5,12 @@ const CartContext = React.createContext({
   cartItems: [],
   addToCart: () => {},
   removeFromCart: () => {},
+  shoppingCartToggle: () => {},
 });
 
 export const CartContextProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
+  const [showShoppingCart, setShowShoppingCart] = useState(false);
 
   useEffect(() => {
     if (localStorage.length !== 0) {
@@ -18,7 +20,7 @@ export const CartContextProvider = (props) => {
         const key = localStorage.key(i);
         const value = parseInt(localStorage.getItem(key));
         const index = items.findIndex((item) => item.id === key);
-        if (index !== -1) {
+        if (index !== -1 && value === Number) {
           const storedItem = {
             ...items[index],
             amount: value,
@@ -73,12 +75,18 @@ export const CartContextProvider = (props) => {
     }
   };
 
+  const shoppingCartToggleHandler = () => {
+    setShowShoppingCart((prevState) => !prevState);
+  };
+
   return (
     <CartContext.Provider
       value={{
         cartItems: cartItems,
+        showShoppingCart: showShoppingCart,
         addToCart: addItemHandler,
         removeFromCart: removeItemHandler,
+        shoppingCartToggle: shoppingCartToggleHandler,
       }}
     >
       {props.children}

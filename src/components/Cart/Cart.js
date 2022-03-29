@@ -5,15 +5,15 @@ import CartContext from '../../store/cart-context';
 import CartItems from './CartItems';
 
 const Cart = (props) => {
-  const ctx = useContext(CartContext);
+  const cartCtx = useContext(CartContext);
 
-  const totalPrice = ctx.cartItems.reduce(function (acc, item) {
+  const totalPrice = cartCtx.cartItems.reduce(function (acc, item) {
     return acc + item.amount * item.price;
   }, 0);
 
   return (
     <React.Fragment>
-      <Backdrop onClose={props.onClick} />
+      <Backdrop onClose={cartCtx.shoppingCartToggle} />
       <div className={classes.container}>
         <CartItems />
         {totalPrice > 0 && (
@@ -25,7 +25,7 @@ const Cart = (props) => {
         {totalPrice > 0 ? (
           <button className={classes.orderButton}>Order</button>
         ) : (
-          <button onClick={props.shoppingCartToggle} className={classes.orderButton}>
+          <button onClick={cartCtx.shoppingCartToggle} className={classes.orderButton}>
             No items (yet!)
           </button>
         )}

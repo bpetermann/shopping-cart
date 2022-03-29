@@ -40,7 +40,7 @@
   filter: none;
 }
 
-.cartItems {
+.amountBtn {
   padding: 0 0.4rem;
   vertical-align: middle;
   position: relative;
@@ -64,7 +64,7 @@
 }
 
 .wishList img {
-  padding-top: 0.2rem;
+  padding-top: 0.4rem;
   width: 1.4rem;
   height: 1.4rem;
   filter: invert(48%) sepia(5%) saturate(17%) hue-rotate(358deg) brightness(95%)

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import classes from './App.module.css';
 
 import Header from './components/Header/Header';
@@ -8,36 +8,15 @@ import Footer from './components/Footer/Footer';
 import Cart from './components/Cart/Cart';
 import Wishlist from './components/Wishlist/Wishlist';
 import useFetchShop from './hooks/use-fetchshop';
+import WishlistContext from './store/wishlist-context';
+import CartContext from './store/cart-context';
 
 function App() {
-  const [showShoppingCart, setShowShoppingCart] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [wishListItems, setWishListItems] = useState([]);
-  const [showWishList, setShowWishList] = useState(false);
-
+  const cartCtx = useContext(CartContext);
+  const wishlistCtx = useContext(WishlistContext);
   const fetchShopData = useFetchShop();
   const { storeItems, error, fetchStoreItems } = fetchShopData;
-
-  const addToWishlistHandler = (shopItem) => {
-    setWishListItems(wishListItems.concat(shopItem));
-  };
-
-  const removeFromWishlistHandler = (shopItem) => {
-    setWishListItems(
-      wishListItems.filter((item) => item.name !== shopItem.name)
-    );
-  };
-
-  const wishlistToggleHandler = (origin) => {
-    if (wishListItems.length === 0 && origin === 'wishListBtn') {
-      return;
-    }
-    setShowWishList((prevState) => !prevState);
-  };
-
-  const shoppingCartToggleHandler = () => {
-    setShowShoppingCart((prevState) => !prevState);
-  };
 
   const searchTermChangeHandler = (text) => {
     setSearchTerm(text);
@@ -54,14 +33,7 @@ function App() {
   let content = <p className={classes.error}>Loading...</p>;
 
   if (storeItems.length > 0) {
-    content = (
-      <ShoppingList
-        selectedItems={filteredItems}
-        addToWishlist={addToWishlistHandler}
-        removeFromWishlist={removeFromWishlistHandler}
-        wishListItems={wishListItems}
-      />
-    );
+    content = <ShoppingList selectedItems={filteredItems} />;
   }
 
   if (error) {
@@ -70,20 +42,9 @@ function App() {
 
   return (
     <div className={classes.container}>
-      {showShoppingCart && (
-        <Cart shoppingCartToggle={shoppingCartToggleHandler} />
-      )}
-      {showWishList && (
-        <Wishlist
-          wishlistToggle={wishlistToggleHandler}
-          removeFromWishlist={removeFromWishlistHandler}
-          wishListItems={wishListItems}
-        />
-      )}
-      <Header
-        shoppingCartToggle={shoppingCartToggleHandler}
-        showWishList={wishlistToggleHandler}
-      />
+      {cartCtx.showShoppingCart && <Cart />}
+      {wishlistCtx.showWishlist && <Wishlist />}
+      <Header />
       <Searchbar onChangeSearchTerm={searchTermChangeHandler} />
       <React.Fragment>{content}</React.Fragment>
       <Footer />

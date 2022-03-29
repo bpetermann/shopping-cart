@@ -1,29 +1,25 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 
 import classes from './Header.module.css';
 import CartContext from '../../store/cart-context';
+import WishlistContext from '../../store/wishlist-context';
 
-const Header = (props) => {
-  const ctx = useContext(CartContext);
-  const [cartItemsClass, setCartItemsClass] = useState(`${classes.cartitems}`);
+const Header = () => {
+  const cartCtx = useContext(CartContext);
+  const wishlistCtx = useContext(WishlistContext);
 
-  const totalCartItems = ctx.cartItems.reduce(function (acc, item) {
+  const totalCartItems = cartCtx.cartItems.reduce(function (acc, item) {
     return acc + item.amount;
   }, 0);
 
-  useEffect(() => {
-    setCartItemsClass(`${classes.cartItems} ${classes.increase}`);
-    setTimeout(() => {
-      setCartItemsClass(`${classes.cartItems}`);
-    }, 300);
-  }, [totalCartItems]);
+  const totalWishlistItems = wishlistCtx.wishlistItems.length;
 
   return (
     <header className={classes.container}>
       <h2>Shopping Cart</h2>
       <div className={classes.btnContainer}>
         <button
-          onClick={() => props.showWishList('wishListBtn')}
+          onClick={() => wishlistCtx.wishlistToggle('wishListBtn')}
           className={classes.wishList}
         >
           <img
@@ -31,17 +27,18 @@ const Header = (props) => {
             alt={'Wish list'}
             className={classes.image}
           />
+          <span className={classes.amountBtn}>{totalWishlistItems}</span>
         </button>
         <button
           className={classes.cartButton}
-          onClick={props.shoppingCartToggle}
+          onClick={cartCtx.shoppingCartToggle}
         >
           <img
             src={require('../../images/cart.png')}
             alt={'Shopping Cart'}
             className={classes.cartImage}
           />
-          <span className={cartItemsClass}>{totalCartItems}</span>
+          <span className={classes.amountBtn}>{totalCartItems}</span>
         </button>
       </div>
     </header>

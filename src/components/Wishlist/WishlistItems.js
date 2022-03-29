@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import CartContext from '../../store/cart-context';
 import classes from '../Main/ShoppingItem.module.css';
+import WishlistContext from '../../store/wishlist-context';
 
-const WishlistItems = (props) => {
+const WishlistItems = () => {
   const ctx = useContext(CartContext);
+  const wishlistCtx = useContext(WishlistContext);
 
   return (
     <React.Fragment>
-      {props.wishListItems.map((item) => {
+      {wishlistCtx.wishlistItems.map((item) => {
         return (
           <div className={classes.container} key={item.id}>
             <img
@@ -17,7 +19,7 @@ const WishlistItems = (props) => {
             />
             <button
               className={classes.wishlistBtn}
-              onClick={() => props.removeFromWishlist(item)}
+              onClick={() => wishlistCtx.removeFromWishlist(item)}
             >
               <img
                 src={require('../../images/heart-full.png')}
