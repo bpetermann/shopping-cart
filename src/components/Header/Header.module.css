@@ -54,10 +54,6 @@
   color: #fff;
 }
 
-.wishlistAmountBtn{
-  top: -1.15rem;
-}
-
 .increase {
   opacity: 0.8;
 }
@@ -70,8 +66,8 @@
 
 .wishList img {
   margin-top: 0.3rem;
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.4rem;
+  height: 1.4rem;
   filter: invert(48%) sepia(5%) saturate(17%) hue-rotate(358deg) brightness(95%)
     contrast(86%);
 }
