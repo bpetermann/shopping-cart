@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import storeItems from '../database/store-items';
+import React, { useState } from 'react';
 
 const WishlistContext = React.createContext({
   wishlistItems: [],
@@ -11,7 +10,8 @@ export const WishlistContextProvider = (props) => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [showWishlist, setshowWishlist] = useState(false);
 
-  useEffect(() => {
+  const getStoredWishlistItems = (storeItems) => {
+    console.log(storeItems)
     if (localStorage.length !== 0) {
       const items = storeItems;
       const initialWishlistItems = [];
@@ -26,8 +26,7 @@ export const WishlistContextProvider = (props) => {
       }
       setWishlistItems(initialWishlistItems);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
 
   const addToWishlistHandler = (shopItem) => {
     setWishlistItems(wishlistItems.concat(shopItem));
@@ -56,6 +55,7 @@ export const WishlistContextProvider = (props) => {
         addToWishlist: addToWishlistHandler,
         removeFromWishlist: removeFromWishlistHandler,
         wishlistToggle: wishlistToggleHandler,
+        getStoredWishlistItems,
       }}
     >
       {props.children}

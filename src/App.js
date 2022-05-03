@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import classes from './App.module.css';
 
 import Header from './components/Header/Header';
@@ -9,15 +9,32 @@ import Cart from './components/Cart/Cart';
 import Wishlist from './components/Wishlist/Wishlist';
 import WishlistContext from './store/wishlist-context';
 import CartContext from './store/cart-context';
-import storeItems from './database/store-items';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
-  const cartCtx = useContext(CartContext);
-  const wishlistCtx = useContext(WishlistContext);
+  const [storeItems, setStoreItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const { getStoredCartItems, showShoppingCart } = useContext(CartContext);
+  const { getStoredWishlistItems, showWishlist } = useContext(WishlistContext);
 
   const searchTermChangeHandler = (text) => {
     setSearchTerm(text);
+  };
+
+  useEffect(() => {
+    fetchStoreItems();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchStoreItems = async () => {
+    const response = await fetch(
+      `https://my-json-server.typicode.com/bpetermann/shopping-cart-jsonserver/storeItems`
+    );
+    const data = await response.json();
+    setStoreItems(data);
+    setIsLoading(false);
+    getStoredWishlistItems(data);
+    getStoredCartItems(data);
   };
 
   let filteredItems = storeItems.filter((item) => {
@@ -26,11 +43,12 @@ function App() {
 
   return (
     <div className={classes.container}>
-      {cartCtx.showShoppingCart && <Cart />}
-      {wishlistCtx.showWishlist && <Wishlist />}
+      {showShoppingCart && <Cart />}
+      {showWishlist && <Wishlist />}
       <Header />
       <Searchbar onChangeSearchTerm={searchTermChangeHandler} />
-      <ShoppingList selectedItems={filteredItems} />
+      {isLoading && <p>...Loading</p>}
+      {!isLoading && <ShoppingList selectedItems={filteredItems} />}
       <Footer />
     </div>
   );

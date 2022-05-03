@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import storeItems from '../database/store-items';
+import React, { useState } from 'react';
 
 const CartContext = React.createContext({
   cartItems: [],
@@ -12,7 +11,7 @@ export const CartContextProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
   const [showShoppingCart, setShowShoppingCart] = useState(false);
 
-  useEffect(() => {
+  const getStoredCartItems = (storeItems) => {
     if (localStorage.length !== 0) {
       const items = storeItems;
       const initialCartItems = [];
@@ -30,8 +29,7 @@ export const CartContextProvider = (props) => {
       }
       setCartItems(initialCartItems);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
 
   const addItemHandler = (shopItem) => {
     const existingCartItemIndex = cartItems.findIndex(
@@ -87,6 +85,7 @@ export const CartContextProvider = (props) => {
         addToCart: addItemHandler,
         removeFromCart: removeItemHandler,
         shoppingCartToggle: shoppingCartToggleHandler,
+        getStoredCartItems
       }}
     >
       {props.children}
