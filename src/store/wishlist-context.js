@@ -11,7 +11,6 @@ export const WishlistContextProvider = (props) => {
   const [showWishlist, setshowWishlist] = useState(false);
 
   const getStoredWishlistItems = (storeItems) => {
-    console.log(storeItems)
     if (localStorage.length !== 0) {
       const items = storeItems;
       const initialWishlistItems = [];

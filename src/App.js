@@ -17,10 +17,6 @@ function App() {
   const { getStoredCartItems, showShoppingCart } = useContext(CartContext);
   const { getStoredWishlistItems, showWishlist } = useContext(WishlistContext);
 
-  const searchTermChangeHandler = (text) => {
-    setSearchTerm(text);
-  };
-
   useEffect(() => {
     fetchStoreItems();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -37,6 +33,10 @@ function App() {
     getStoredCartItems(data);
   };
 
+  const searchTermChangeHandler = (text) => {
+    setSearchTerm(text);
+  };
+
   let filteredItems = storeItems.filter((item) => {
     return item.description.toLowerCase().includes(searchTerm.toLowerCase());
   });
@@ -47,8 +47,7 @@ function App() {
       {showWishlist && <Wishlist />}
       <Header />
       <Searchbar onChangeSearchTerm={searchTermChangeHandler} />
-      {isLoading && <p>...Loading</p>}
-      {!isLoading && <ShoppingList selectedItems={filteredItems} />}
+      <ShoppingList selectedItems={filteredItems} isLoading={isLoading} />
       <Footer />
     </div>
   );

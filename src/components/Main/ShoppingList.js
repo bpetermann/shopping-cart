@@ -1,15 +1,20 @@
 import React from 'react';
-
 import classes from './ShoppingList.module.css';
 import ShoppingItem from './ShoppingItem';
 import Introduction from './Introduction';
+import Spinner from '../shared/Spinner';
 
-const ShoppingList = (props) => {
+const ShoppingList = ({ isLoading, selectedItems }) => {
   return (
     <React.Fragment>
       <Introduction />
+
       <div className={classes.container}>
-        <ShoppingItem selectedItems={props.selectedItems} />
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <ShoppingItem selectedItems={selectedItems} />
+        )}
       </div>
     </React.Fragment>
   );
