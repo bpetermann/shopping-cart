@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-
+import Logo from './Logo';
 import classes from './Header.module.css';
 import CartContext from '../../store/cart-context';
 import WishlistContext from '../../store/wishlist-context';
@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header className={classes.container}>
-      <h2>Shopping Cart</h2>
+      <Logo />
       <div className={classes.btnContainer}>
         <button
           onClick={() => wishlistCtx.wishlistToggle('wishListBtn')}

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Macondo&family=Montserrat:wght@400;700&family=Open+Sans:ital,wght@0,300;0,600;1,500&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 body,
 html {
@@ -10,5 +11,4 @@ body {
   margin: 0;
   background-color: #ededed;
   font-family: 'Montserrat', sans-serif;
-
 }
